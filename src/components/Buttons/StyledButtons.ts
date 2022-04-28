@@ -6,7 +6,7 @@ import { baseStyles, getButtonSizeStyles, getButtonVariantStyles } from './getBu
 
 export const StyledButton = styled.button<ButtonProps>`
   ${baseStyles}
-  ${(props) => getButtonSizeStyles(props.size)}
+  ${({ size = 'block' }) => getButtonSizeStyles(size)}
   ${(props) => getButtonVariantStyles(props)}
 `;
 

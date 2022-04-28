@@ -1,10 +1,13 @@
 import { css } from 'styled-components';
 
-import { ThemeType } from '../../styles/theme';
+import { DARK_GRAY } from 'styles/colors';
+import { ThemeType } from 'styles/theme';
 import { ButtonProps, ButtonSize } from './ButtonProps';
 
 export const baseStyles = css`
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: normal;
   font-size: 1.2rem;
   text-decoration: none;
@@ -24,13 +27,13 @@ export const getButtonSizeStyles = (size: ButtonSize) => {
       `;
     case 'md':
       return css`
-        padding: 1rem 3rem;
+        padding: 1rem 2.5rem;
         width: 15rem;
-        min-width: 150px;
       `;
     case 'block':
       return css`
-        flex-grow: 1; //FIXME:
+        padding: 1rem 2.5rem;
+        flex-grow: 1;
       `;
   }
 };
@@ -38,11 +41,16 @@ export const getButtonSizeStyles = (size: ButtonSize) => {
 export const getButtonVariantStyles = (props: ButtonProps & { theme: ThemeType }) => {
   const { theme, variant } = props;
 
-  const activeState = css`
+  const styledStates = css`
     &:active {
       background-color: ${theme.colors.secondary};
       border-color: ${theme.colors.secondary};
       opacity: 0.9;
+    }
+
+    &:disabled {
+      background-color: ${DARK_GRAY};
+      border-color: ${DARK_GRAY};
     }
   `;
 
@@ -63,12 +71,12 @@ export const getButtonVariantStyles = (props: ButtonProps & { theme: ThemeType }
     case 'main_outline':
       return css`
         ${getOutlinedStyle('main', 'inverse_main')}
-        ${activeState}
+        ${styledStates}
       `;
     case 'inverse_outline':
       return css`
         ${getOutlinedStyle('inverse_main', 'main')}
-        ${activeState}
+        ${styledStates}
       `;
     case 'secondary':
       return css`
@@ -80,7 +88,7 @@ export const getButtonVariantStyles = (props: ButtonProps & { theme: ThemeType }
           background-color: ${theme.colors.inverse_main};
           border-color: ${theme.colors.inverse_main};
         }
-        ${activeState}
+        ${styledStates}
       `;
   }
 };

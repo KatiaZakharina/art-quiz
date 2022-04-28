@@ -29,11 +29,11 @@ ${normalize}
      }
 
      @media (min-width: 1440px) {
-       font-size: ${px2vw(20)};
+       font-size: ${px2vw(18)};
      }
 
      @media (min-width: 1600px) {
-       font-size: ${px2vw(22)};
+       font-size: ${px2vw(16)};
      }
    }
 
@@ -43,5 +43,9 @@ ${normalize}
    color: ${({ theme }) => theme.colors.inverse_main};
    background-color:  ${({ theme }) => theme.colors.main};
    transition: all 0.25s linear;
+ }
+
+ html, body, #root{
+   height: 100%;
  }
 `;

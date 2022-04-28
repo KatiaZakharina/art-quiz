@@ -1,6 +1,6 @@
 import { DevInfo, GitHubLogo, StyledFooter } from './StyledFooter';
 
-import github from '../../assets/svg/github.svg';
+import github from 'assets/svg/github.svg';
 
 export function Footer() {
   return (

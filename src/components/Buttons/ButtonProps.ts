@@ -8,7 +8,8 @@ export type ButtonProps = {
   onClick?: MouseEventHandler<HTMLButtonElement> & ((e: Event) => void);
   to?: string;
   disabled?: boolean;
-  size: ButtonSize;
+  size?: ButtonSize;
   variant: ButtonVariant;
   as?: React.ElementType;
+  type?: 'submit' | 'reset' | 'button';
 };

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { WHITE } from '../../styles/colors';
+import { WHITE } from 'styles/colors';
 
 export const StyledFooter = styled.footer`
   display: flex;
