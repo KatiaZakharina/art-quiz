@@ -1,5 +1,7 @@
+import { Themes } from 'store/main/types';
+
 export type ThemeType = {
-  name: string;
+  name: Themes;
   colors: {
     main: string;
     inverse_main: string;
@@ -11,7 +13,7 @@ export type ThemeType = {
 export type Colors = keyof ThemeType['colors'];
 
 export const darkTheme: ThemeType = {
-  name: 'dark',
+  name: Themes.Dark,
   colors: {
     main: '#010101',
     inverse_main: '#FFF',
@@ -21,7 +23,7 @@ export const darkTheme: ThemeType = {
 };
 
 export const lightTheme: ThemeType = {
-  name: 'light',
+  name: Themes.Light,
   colors: {
     main: '#FFF',
     inverse_main: '#010101',

@@ -12,15 +12,30 @@ import {
   ButtonsWrapper,
 } from './StyledSettingsForm';
 
+import { useAppDispatch } from 'store/hooks';
+import { setSettings } from 'store/main/actions';
+import { Themes } from 'store/main/types';
+
 import volumeDown from 'assets/svg/volume-mute.svg';
 import volumeUp from 'assets/svg/volume-up.svg';
 
-type SettingsData = { volume: string; 'timer-mode': boolean; time: string };
+type SettingsData = { volume: string; hasTimer: boolean; answerTime: string; themeIsDark: boolean };
 
 export function SettingsForm() {
-  const { register, handleSubmit, reset } = useForm<SettingsData>();
+  const { register, handleSubmit, reset, watch } = useForm<SettingsData>();
+  const hasTimer = watch('hasTimer');
 
-  const onSubmit = (data: SettingsData) => console.log(data);
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (data: SettingsData) => {
+    const settings = {
+      theme: data.themeIsDark ? Themes.Dark : Themes.Light,
+      volume: +data.volume,
+      answerTime: +data.answerTime,
+      hasTimer: data.hasTimer,
+    };
+    dispatch(setSettings(settings));
+  };
   const onReset = () => {
     reset();
   };
@@ -28,6 +43,15 @@ export function SettingsForm() {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)} onReset={onReset}>
       <Inputs>
+        <Fieldset>
+          <Legend>Theme</Legend>
+          <label>
+            {Themes.Light}
+            <SwitchInput {...register('themeIsDark')} />
+            {Themes.Dark}
+          </label>
+        </Fieldset>
+
         <Fieldset>
           <Legend>Volume</Legend>
           <RangeInput {...register('volume')} size="small" defaultValue={70} max={100} min={0} />
@@ -41,20 +65,20 @@ export function SettingsForm() {
           <Legend>Time game</Legend>
           <label>
             On
-            <SwitchInput {...register('timer-mode')} />
+            <SwitchInput {...register('hasTimer')} />
           </label>
         </Fieldset>
 
         <Fieldset>
           <Legend>Time to answer</Legend>
           <NumberInput
-            name="time"
+            name="answerTime"
             register={register}
             min={5}
             max={20}
             value={5}
             step={5}
-            // disabled
+            disabled={!hasTimer}
           />
         </Fieldset>
       </Inputs>

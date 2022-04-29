@@ -36,14 +36,13 @@ export const NumberInput = ({
       setValue(value - step);
     }
   };
-  console.log(value);
 
   return (
     <StyledNumber>
       <Button variant="secondary" type="button" onClick={decrement} disabled={disabled}>
         -
       </Button>
-      <Input type="number" value={value} readOnly {...register(name)} disabled={disabled} />
+      <Input type="number" value={value} readOnly {...register(name)} />
       <Button variant="secondary" type="button" onClick={increment} disabled={disabled}>
         +
       </Button>

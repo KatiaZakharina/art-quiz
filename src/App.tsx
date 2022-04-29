@@ -1,27 +1,25 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { Home } from 'pages/Home/Home';
-import { NoMatch } from 'pages/NoMatch/NoMatch';
-import { Settings } from 'pages/Settings/Settings';
-
 import { GlobalStyle } from 'styles/global';
 import { lightTheme, darkTheme } from 'styles/theme';
-import { useDarkMode } from 'styles/hooks/useDarkMode';
+import { Themes } from 'store/main/types';
+import { useAppSelector } from 'store/hooks';
+import { Categories, Home, NoMatch, Settings } from 'pages';
 
 function App() {
-  const [theme, toggleTheme] = useDarkMode();
-  const themeMode = theme === 'dark' ? lightTheme : darkTheme;
-  console.log(theme);
+  const theme = useAppSelector((state) => state.mainReducer.settings.theme);
 
   return (
-    <ThemeProvider theme={themeMode}>
+    <ThemeProvider theme={theme === Themes.Light ? lightTheme : darkTheme}>
       <GlobalStyle />
 
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/artists" element={<Categories type="artists" />} />
+          <Route path="/pictures" element={<Categories type="pictures" />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </BrowserRouter>
