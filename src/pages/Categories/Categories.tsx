@@ -1,13 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ColumnContainer } from 'components/Layout/Container';
 import { ThemedSVG } from 'components/ThemedSVG/ThemedSVG';
-import { Row } from 'components/Layout/Row';
-import { Nav } from 'components/Layout/Nav';
 import { CardList } from './StyledCategories';
 import { CategoryCard } from './CategoryCard/CategoryCard';
 import { CardSkeleton } from './CategoryCard/CardSkeleton';
+import { ColumnContainer, Nav, Row } from 'components/Layout';
 
 import { Category, QuizType } from 'store/quiz/types';
 import { useAppSelector } from 'store/hooks';
@@ -15,12 +14,14 @@ import { categoriesNumber, imageTypeOffset, QUESTIONS_NUM } from 'store/quiz/con
 import { cacheImages } from 'helpers/cacheImages';
 
 import settings from 'assets/svg/settings.svg';
+import { categories } from 'translation/localizedCategories';
 
 type CategoriesProps = { type: QuizType };
 
 export function Categories({ type }: CategoriesProps) {
   const categoryScore = useAppSelector((state) => state.quiz.score[type]);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   const images = Array(categoriesNumber[type])
     .fill('')
@@ -36,7 +37,7 @@ export function Categories({ type }: CategoriesProps) {
   return (
     <ColumnContainer>
       <Row>
-        <Nav title="Categories" />
+        <Nav title={t('Categories')} />
         <Link to="/settings">
           <ThemedSVG src={settings} type="inverse_main" height="2.5rem" width="2.5rem" />
         </Link>
@@ -48,6 +49,7 @@ export function Categories({ type }: CategoriesProps) {
               <CategoryCard
                 type={type}
                 category={category as Category}
+                categoryName={categories[type][idx]}
                 categoryScore={score.value}
                 image={images[idx]}
                 key={idx}

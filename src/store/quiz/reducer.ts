@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { changeLanguage } from 'translation/changeLanguage';
 
 import {
   ANSWER_QUESTION,
@@ -75,6 +76,7 @@ export const quizReducer = createReducer(defaultState, {
   },
 
   [SET_SETTINGS]: (state, { payload }) => {
+    changeLanguage(payload.language);
     state.settings = payload;
   },
 

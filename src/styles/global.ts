@@ -21,19 +21,19 @@ ${normalize}
      font-size: 12px;
 
      @media (min-width: 768px) {
-       font-size: ${px2vw(18)};
+       font-size: ${px2vw(16)};
      }
 
      @media (min-width: 1024px) {
-       font-size: ${px2vw(18)};
+       font-size: ${px2vw(16)};
      }
 
      @media (min-width: 1440px) {
-       font-size: ${px2vw(18)};
+       font-size: ${px2vw(16)};
      }
 
      @media (min-width: 1600px) {
-       font-size: ${px2vw(16)};
+       font-size: ${px2vw(14)};
      }
    }
 

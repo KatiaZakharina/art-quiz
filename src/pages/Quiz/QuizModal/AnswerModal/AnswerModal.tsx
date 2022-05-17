@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Backdrop, Modal } from '@mui/material';
 
 import { Description, Picture, PictureName } from './StyledAnswerModal';
@@ -13,7 +14,7 @@ import {
   selectCurrentScore,
 } from 'store/quiz/selectors';
 
-import picturesData from 'model/pictures_ru.json';
+import { picturesData } from 'translation/localizedPicturesData';
 
 export const AnswerModal = () => {
   const { question } = useAppSelector(selectCurrentQuiz);
@@ -22,6 +23,7 @@ export const AnswerModal = () => {
   const correctNum = useAppSelector(selectCurrentCorrectNum);
 
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const onClose = () => {
     dispatch(setModalVisibility({ type: 'answer', visible: false }));
@@ -52,7 +54,7 @@ export const AnswerModal = () => {
         </Description>
 
         <Button size="full" variant="secondary" onClick={onClose}>
-          Next
+          {t('Next')}
         </Button>
       </StyledBox>
     </Modal>

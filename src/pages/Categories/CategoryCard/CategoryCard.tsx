@@ -10,9 +10,15 @@ import { startQuiz } from 'store/quiz/actions';
 
 import reload from 'assets/svg/radix-icons_reload.svg';
 
-type Props = { type: QuizType; category: Category; categoryScore: number; image: string };
+type Props = {
+  type: QuizType;
+  category: Category;
+  categoryName: string;
+  categoryScore: number;
+  image: string;
+};
 
-export const CategoryCard = ({ type, category, categoryScore, image }: Props) => {
+export const CategoryCard = ({ type, category, categoryScore, image, categoryName }: Props) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -26,7 +32,7 @@ export const CategoryCard = ({ type, category, categoryScore, image }: Props) =>
       }}
     >
       <CardHeader>
-        <Title>{category}</Title>
+        <Title>{categoryName}</Title>
         <Score>
           {categoryScore}/{QUESTIONS_NUM}
         </Score>

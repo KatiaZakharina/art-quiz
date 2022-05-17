@@ -5,12 +5,18 @@ export const enum Themes {
   Dark = 'dark',
 }
 
+export const enum Languages {
+  RU = 'Russian',
+  EN = 'English',
+}
+
 export type Settings = {
   theme: Themes;
   hasTimer: boolean;
-  answerTime: number;
   volume: number;
+  language: Languages;
 };
+
 export type QuizType = 'artists' | 'pictures';
 
 type ArtistsCategories = typeof artistsCategories;

@@ -1,4 +1,5 @@
-import { CategoryArray, MainState, Themes, TypeScore } from './types';
+import { CategoryArray, Languages, MainState, Themes, TypeScore } from './types';
+import categories from 'model/categories.json';
 
 export const QUESTIONS_NUM = 10;
 export const ANSWERS_NUM = 4;
@@ -6,37 +7,16 @@ export const ANSWERS_NUM = 4;
 export const imageTypeOffset = { artists: 0, pictures: 120 };
 export const categoriesNumber = { artists: 12, pictures: 12 };
 
-export const defaultSettings = { theme: Themes.Dark, answerTime: 15, hasTimer: true, volume: 80 };
+export const defaultSettings = {
+  theme: Themes.Dark,
+  hasTimer: true,
+  volume: 80,
+  language: Languages.RU,
+};
 
-export const artistsCategories = [
-  'Famous',
-  'Russian',
-  'Ancient',
-  'European',
-  'Little-known',
-  'Contemporary',
-  'Avant-garde',
-  'Impressionism',
-  'Minimalism',
-  'Renaissance',
-  'Expressionism',
-  'Classicism',
-] as const;
+export const artistsCategories = categories.artists;
+export const picturesCategories = categories.pictures;
 
-export const picturesCategories = [
-  'Portrait',
-  'Landscape',
-  'Impressionism',
-  'Expressionism',
-  'Avant-garde',
-  'Minimalism',
-  'Surrealism',
-  'Renaissance',
-  'Nude',
-  'Kitsch',
-  'Still life',
-  'Interior',
-] as const;
 export const defaultCategoriesScore = { value: 0, results: Array(QUESTIONS_NUM).fill(false) };
 
 function getDefaultCategoriesScore(categories: CategoryArray) {

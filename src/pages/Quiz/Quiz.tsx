@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ColumnContainer } from 'components/Layout/Container';
+import { ColumnContainer } from 'components/Layout';
 import { QuizModal } from './QuizModal/QuizModal';
 import { Timer } from './Timer/Timer';
 
@@ -32,6 +32,7 @@ export const Quiz = () => {
   useEffect(() => {
     const answers = getUniqueRandomsInRange(minImgNum, maxImgNum, 4, correctNum);
     setAnswers(answers);
+    setIsLoading(true);
 
     const answersImages = answers.map((num) => require(`assets/img/${num}.jpg`));
     cacheImages(answersImages, setIsLoading);

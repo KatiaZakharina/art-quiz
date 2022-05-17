@@ -1,11 +1,14 @@
-import { ColumnContainer } from 'components/Layout/Container';
-import { Nav } from 'components/Layout/Nav';
+import { useTranslation } from 'react-i18next';
+
+import { ColumnContainer, Nav } from 'components/Layout';
 import { SettingsForm } from './SettingsForm/SettingsForm';
 
 export function Settings() {
+  const { t } = useTranslation();
+
   return (
     <ColumnContainer>
-      <Nav title="Settings" />
+      <Nav title={t('Settings')} />
       <SettingsForm />
     </ColumnContainer>
   );

@@ -1,6 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
+import { getCurrentLanguage } from './getCurrentLanguage';
+
 import EN from './en/en.json';
 import RU from './ru/ru.json';
 
@@ -13,8 +15,7 @@ const resources = {
   },
 };
 
-const currentLang = localStorage.getItem('current-language') || 'ru';
-console.log(currentLang);
+const currentLang = getCurrentLanguage();
 
 i18n.use(initReactI18next).init({
   resources,

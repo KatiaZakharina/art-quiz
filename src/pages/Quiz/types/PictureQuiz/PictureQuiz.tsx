@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import {
   Answer,
   Answers,
@@ -7,7 +9,7 @@ import {
   StyledPictureQuiz,
 } from './StyledPictureQuiz';
 
-import picturesData from 'model/pictures_ru.json';
+import { picturesData } from 'translation/localizedPicturesData';
 
 type PictureQuizProps = {
   answers: number[];
@@ -22,9 +24,11 @@ export const PictureQuiz = ({
   onAnswerQuestion,
   correctNum,
 }: PictureQuizProps) => {
+  const { t } = useTranslation();
+
   return (
     <StyledPictureQuiz>
-      <Question>Which is the author of this picture?</Question>
+      <Question>{t('Which is the author of this picture?')}</Question>
       {!isLoading ? (
         <Picture style={{ backgroundImage: `url(${require(`assets/img/${correctNum}.jpg`)})` }} />
       ) : (

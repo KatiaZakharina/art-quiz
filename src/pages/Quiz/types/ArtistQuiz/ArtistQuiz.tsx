@@ -1,6 +1,7 @@
 import { Answer, Answers, AnswerSkeleton, Question, StyledArtistQuiz } from './StyledArtistQuiz';
 
-import picturesData from 'model/pictures_ru.json';
+import { picturesData } from 'translation/localizedPicturesData';
+import { useTranslation } from 'react-i18next';
 
 type ArtistQuizProps = {
   answers: number[];
@@ -15,9 +16,13 @@ export const ArtistQuiz = ({
   onAnswerQuestion,
   correctNum,
 }: ArtistQuizProps) => {
+  const { t } = useTranslation();
+
   return (
     <StyledArtistQuiz>
-      <Question>Which is {picturesData.data[correctNum].author} picture?</Question>
+      <Question>
+        {t('Which is')} {picturesData.data[correctNum].author} {t('picture?')}
+      </Question>
       <Answers>
         {answers.map((num, idx) =>
           !isLoading ? (

@@ -1,0 +1,30 @@
+{
+  "artists": [
+    "Famous",
+    "Russian",
+    "Ancient",
+    "European",
+    "Little-known",
+    "Contemporary",
+    "Avant-garde",
+    "Impressionism",
+    "Minimalism",
+    "Renaissance",
+    "Expressionism",
+    "Classicism"
+  ],
+  "pictures": [
+    "Portrait",
+    "Landscape",
+    "Impressionism",
+    "Expressionism",
+    "Avant-garde",
+    "Minimalism",
+    "Surrealism",
+    "Renaissance",
+    "Baroque",
+    "Kitsch",
+    "Still life",
+    "Interior"
+  ]
+}
