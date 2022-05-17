@@ -27,15 +27,14 @@ export const Timer = () => {
   }, []);
 
   const onCloseQuiz = () => {
-    dispatch(setModalVisibility({ type: 'quit', visible: false }));
+    dispatch(setModalVisibility({ type: 'quit', visible: true }));
   };
 
   return (
     <StyledTimer>
       <ThemedSVG src={close} height="2rem" width="2rem" onClick={onCloseQuiz} />
       <StyledLinearProgress variant="determinate" value={progress} />
-      {/* <input className="quiz__timeline range-input" type="range" min="0" step="1" value="100" /> */}
-      <TimerCount className="quiz__time">0:00</TimerCount>
+      <TimerCount>0:00</TimerCount>
     </StyledTimer>
   );
 };

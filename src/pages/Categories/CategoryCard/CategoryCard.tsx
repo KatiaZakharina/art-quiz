@@ -40,7 +40,7 @@ export const CategoryCard = ({ type, category, categoryScore, image, categoryNam
       <Picture style={{ backgroundImage: `url(${image})` }} />
       <Details>
         <ThemedSVG src={reload} type="main" />
-        <h5 className="card__again">Play again</h5>
+        <h5>Play again</h5>
       </Details>
     </StyledCard>
   );
