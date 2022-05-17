@@ -13,8 +13,8 @@ import {
 } from './StyledSettingsForm';
 
 import { useAppDispatch } from 'store/hooks';
-import { setSettings } from 'store/main/actions';
-import { Themes } from 'store/main/types';
+import { setSettings } from 'store/quiz/actions';
+import { Themes } from 'store/quiz/types';
 
 import volumeDown from 'assets/svg/volume-mute.svg';
 import volumeUp from 'assets/svg/volume-up.svg';

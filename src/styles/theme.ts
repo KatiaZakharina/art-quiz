@@ -1,4 +1,4 @@
-import { Themes } from 'store/main/types';
+import { Themes } from 'store/quiz/types';
 
 export type ThemeType = {
   name: Themes;

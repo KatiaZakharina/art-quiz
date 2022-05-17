@@ -3,12 +3,12 @@ import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle } from 'styles/global';
 import { lightTheme, darkTheme } from 'styles/theme';
-import { Themes } from 'store/main/types';
+import { Themes } from 'store/quiz/types';
 import { useAppSelector } from 'store/hooks';
-import { Categories, Home, NoMatch, Settings } from 'pages';
+import { Categories, Home, NoMatch, Settings, Quiz } from 'pages';
 
 function App() {
-  const theme = useAppSelector((state) => state.mainReducer.settings.theme);
+  const theme = useAppSelector((state) => state.quiz.settings.theme);
 
   return (
     <ThemeProvider theme={theme === Themes.Light ? lightTheme : darkTheme}>
@@ -20,6 +20,7 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/artists" element={<Categories type="artists" />} />
           <Route path="/pictures" element={<Categories type="pictures" />} />
+          <Route path="/quiz" element={<Quiz />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </BrowserRouter>

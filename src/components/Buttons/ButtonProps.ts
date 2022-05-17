@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 
-export type ButtonSize = 'sm' | 'md' | 'block';
+export type ButtonSize = 'sm' | 'md' | 'block' | 'full';
 export type ButtonVariant = 'main_outline' | 'inverse_outline' | 'secondary';
 
 export type ButtonProps = {

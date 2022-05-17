@@ -10,7 +10,6 @@ export const cacheImages = async (srcArray: string[], setIsLoading: (state: bool
   });
 
   await Promise.all(promise);
-  console.log(false);
 
   setIsLoading(false);
 };

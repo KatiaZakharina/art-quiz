@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { ButtonsWrapper, StyledHome, StyledLogo, StyledTopPanel } from './StyledHome';
 import { Button } from 'components/Buttons/Buttons';
@@ -10,6 +11,8 @@ import settings from 'assets/svg/settings.svg';
 import logo from 'assets/svg/art_quiz.svg';
 
 export function Home() {
+  const { t } = useTranslation();
+
   return (
     <StyledHome>
       <ColumnContainer>
@@ -24,10 +27,10 @@ export function Home() {
 
           <ButtonsWrapper>
             <Button size="md" variant="inverse_outline" to="/artists">
-              Artist quiz
+              {t('Artist quiz')}
             </Button>
             <Button size="md" variant="inverse_outline" to="/pictures">
-              Pictures quiz
+              {t('Pictures quiz')}
             </Button>
           </ButtonsWrapper>
         </div>

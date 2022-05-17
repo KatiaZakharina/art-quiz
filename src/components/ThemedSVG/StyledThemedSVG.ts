@@ -9,6 +9,14 @@ export const StyledSVG = styled(SVG)<{
 }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+  cursor: pointer;
+  transition: opacity 0.3s linear;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  opacity: 0.8;
 
   & path {
     fill: ${({ theme, type = 'inverse_main' }) => theme.colors[type]};

@@ -9,9 +9,9 @@ import { CardList } from './StyledCategories';
 import { CategoryCard } from './CategoryCard/CategoryCard';
 import { CardSkeleton } from './CategoryCard/CardSkeleton';
 
-import { QuizType } from 'store/main/types';
+import { Category, QuizType } from 'store/quiz/types';
 import { useAppSelector } from 'store/hooks';
-import { categoriesNumber } from 'store/main/constants';
+import { categoriesNumber, imageTypeOffset, QUESTIONS_NUM } from 'store/quiz/constants';
 import { cacheImages } from 'helpers/cacheImages';
 
 import settings from 'assets/svg/settings.svg';
@@ -19,18 +19,18 @@ import settings from 'assets/svg/settings.svg';
 type CategoriesProps = { type: QuizType };
 
 export function Categories({ type }: CategoriesProps) {
-  const categoryScore = useAppSelector((state) => state.mainReducer.categoriesScore[type]);
-  const [isLoaded, setIsLoaded] = useState(true);
+  const categoryScore = useAppSelector((state) => state.quiz.score[type]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const images = Array(categoriesNumber[type])
     .fill('')
     .map((_, idx) => {
-      const imgNum = idx * 10 + categoriesNumber[type];
+      const imgNum = idx * QUESTIONS_NUM + imageTypeOffset[type];
       return require(`assets/img/${imgNum}.jpg`);
     });
 
   useEffect(() => {
-    cacheImages(images, setIsLoaded);
+    cacheImages(images, setIsLoading);
   }, [images]);
 
   return (
@@ -43,11 +43,12 @@ export function Categories({ type }: CategoriesProps) {
       </Row>
 
       <CardList>
-        {!isLoaded
-          ? Object.entries(categoryScore).map(([category, score], idx) => (
+        {!isLoading
+          ? Object.entries(categoryScore).map(([category, { score }], idx) => (
               <CategoryCard
-                category={category}
-                categoryScore={score}
+                type={type}
+                category={category as Category}
+                categoryScore={score.value}
                 image={images[idx]}
                 key={idx}
               />

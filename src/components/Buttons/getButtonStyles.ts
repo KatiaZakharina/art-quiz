@@ -35,6 +35,11 @@ export const getButtonSizeStyles = (size: ButtonSize) => {
         padding: 1rem 2.5rem;
         flex-grow: 1;
       `;
+    case 'full':
+      return css`
+        width: 100%;
+        padding: 0.8rem 2rem;
+      `;
   }
 };
 
@@ -86,7 +91,7 @@ export const getButtonVariantStyles = (props: ButtonProps & { theme: ThemeType }
 
         &:hover {
           background-color: ${theme.colors.inverse_main};
-          border-color: ${theme.colors.inverse_main};
+          border-color: ${theme.colors.secondary};
         }
         ${styledStates}
       `;

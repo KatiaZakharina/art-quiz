@@ -1,17 +1,35 @@
+import { Link } from 'react-router-dom';
+
 import { CardHeader, Details, Picture, Score, StyledCard, Title } from './StyledCategoryCard';
 import { ThemedSVG } from 'components/ThemedSVG/ThemedSVG';
-import { QUESTIONS_NUM } from 'store/main/constants';
+import { QUESTIONS_NUM } from 'store/quiz/constants';
+
+import { useAppDispatch } from 'store/hooks';
+import { Category, QuizType } from 'store/quiz/types';
+import { startQuiz } from 'store/quiz/actions';
 
 import reload from 'assets/svg/radix-icons_reload.svg';
 
-type Props = { category: string; categoryScore: number; image: string };
+type Props = { type: QuizType; category: Category; categoryScore: number; image: string };
 
-export const CategoryCard = ({ category, categoryScore, image }: Props) => {
+export const CategoryCard = ({ type, category, categoryScore, image }: Props) => {
+  const dispatch = useAppDispatch();
+
   return (
-    <StyledCard inactive={categoryScore === 0} completed={categoryScore === QUESTIONS_NUM}>
+    <StyledCard
+      as={Link}
+      to="/quiz"
+      inactive={categoryScore === 0 ? 'inactive' : undefined}
+      completed={categoryScore === QUESTIONS_NUM ? 'completed' : undefined}
+      onClick={() => {
+        dispatch(startQuiz({ type, category }));
+      }}
+    >
       <CardHeader>
         <Title>{category}</Title>
-        <Score>{categoryScore}/10</Score>
+        <Score>
+          {categoryScore}/{QUESTIONS_NUM}
+        </Score>
       </CardHeader>
       <Picture style={{ backgroundImage: `url(${image})` }} />
       <Details>

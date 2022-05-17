@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import { mainReducer } from 'store/main/reducer';
+import { quizReducer } from 'store/quiz/reducer';
 
 export const rootReducer = combineReducers({
-  mainReducer,
+  quiz: quizReducer,
 });

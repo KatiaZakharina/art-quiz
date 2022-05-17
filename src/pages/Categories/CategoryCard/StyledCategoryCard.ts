@@ -16,7 +16,6 @@ export const Picture = styled.div`
   height: calc(50vw - 40px);
   width: calc(50vw - 40px);
   background: center / cover no-repeat;
-  transition: background-image 0.7s ease-in-out;
   border-radius: 15px;
   cursor: pointer;
 
@@ -87,11 +86,14 @@ const completedCss = css`
   }
 `;
 
-export const StyledCard = styled.div<{ inactive?: boolean; completed?: boolean }>`
+export const StyledCard = styled.div<{ inactive?: string; completed?: string }>`
   position: relative;
+  display: block;
   margin-bottom: 25px;
   width: max-content;
+  color: ${({ theme }) => theme.colors.inverse_main};
   overflow: hidden;
+  text-decoration: none;
   cursor: pointer;
 
   ${({ inactive }) => (inactive ? inactiveCss : null)}
