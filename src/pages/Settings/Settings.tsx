@@ -1,5 +1,5 @@
-import { ColumnContainer } from 'components/layout/Container';
-import { Nav } from 'components/layout/Nav';
+import { ColumnContainer } from 'components/Layout/Container';
+import { Nav } from 'components/Layout/Nav';
 import { SettingsForm } from './SettingsForm/SettingsForm';
 
 export function Settings() {

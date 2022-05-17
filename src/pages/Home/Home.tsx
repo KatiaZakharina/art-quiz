@@ -5,7 +5,7 @@ import { ButtonsWrapper, StyledHome, StyledLogo, StyledTopPanel } from './Styled
 import { Button } from 'components/Buttons/Buttons';
 import { Footer } from 'components/Footer/Footer';
 import { ThemedSVG } from 'components/ThemedSVG/ThemedSVG';
-import { ColumnContainer } from 'components/layout/Container';
+import { ColumnContainer } from 'components/Layout/Container';
 
 import settings from 'assets/svg/settings.svg';
 import logo from 'assets/svg/art_quiz.svg';

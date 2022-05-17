@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ColumnContainer } from 'components/layout/Container';
+import { ColumnContainer } from 'components/Layout/Container';
 import { ThemedSVG } from 'components/ThemedSVG/ThemedSVG';
-import { Row } from 'components/layout/Row';
-import { Nav } from 'components/layout/Nav';
+import { Row } from 'components/Layout/Row';
+import { Nav } from 'components/Layout/Nav';
 import { CardList } from './StyledCategories';
 import { CategoryCard } from './CategoryCard/CategoryCard';
 import { CardSkeleton } from './CategoryCard/CardSkeleton';

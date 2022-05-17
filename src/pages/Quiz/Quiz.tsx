@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ColumnContainer } from 'components/layout/Container';
+import { ColumnContainer } from 'components/Layout/Container';
 import { QuizModal } from './QuizModal/QuizModal';
 import { Timer } from './Timer/Timer';
 

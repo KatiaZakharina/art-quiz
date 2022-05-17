@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { ColumnContainer } from 'components/layout/Container';
-import { TopPanel } from 'components/layout/TopPanel';
+import { ColumnContainer } from 'components/Layout/Container';
+import { TopPanel } from 'components/Layout/TopPanel';
 import { StyledSVG } from 'components/ThemedSVG/StyledThemedSVG';
 
 export const StyledHome = styled.div`
