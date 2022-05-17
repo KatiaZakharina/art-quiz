@@ -42,8 +42,6 @@ ${normalize}
    font-weight: 600;
    color: ${({ theme }) => theme.colors.inverse_main};
    background-color:  ${({ theme }) => theme.colors.main};
-   /* transition: all 0.25s linear; */
-   //FIXME: unused css property?
  }
 
  html, body, #root{

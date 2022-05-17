@@ -26,7 +26,6 @@ export const Timer = () => {
     };
   }, []);
 
-  //FIXME: move close logic
   const onCloseQuiz = () => {
     dispatch(setModalVisibility({ type: 'quit', visible: false }));
   };

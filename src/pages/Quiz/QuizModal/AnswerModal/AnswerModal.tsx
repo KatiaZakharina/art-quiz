@@ -28,7 +28,6 @@ export const AnswerModal = () => {
 
     if (question + 1 < QUESTIONS_NUM) {
       dispatch(getNextQuestion());
-      console.log(question, QUESTIONS_NUM);
     } else {
       dispatch(setModalVisibility({ type: 'finalResult', visible: true }));
     }

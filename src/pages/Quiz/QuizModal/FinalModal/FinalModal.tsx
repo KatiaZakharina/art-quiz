@@ -87,7 +87,6 @@ export const FinalModal = () => {
       break;
   }
 
-  console.log(categoryIndex + 1, '==11', categoriesNumber[type]);
   if (categoryIndex + 1 === categoriesNumber[type] && quizScore !== 0) {
     buttons = [{ text: 'Home', onClick: onFinishQuiz, to: '/' }];
   }

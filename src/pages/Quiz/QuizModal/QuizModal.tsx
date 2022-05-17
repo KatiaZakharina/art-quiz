@@ -7,7 +7,6 @@ type Props = { type: ModalType };
 
 export const QuizModal = ({ type }: Props) => {
   const modals = {
-    //TODO: suspense and audio answer and final result
     answer: () => <AnswerModal />,
     finalResult: () => <FinalModal />,
     quit: () => <QuitModal />,

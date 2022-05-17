@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { RootState } from 'store/store';
-import { QUESTIONS_NUM } from './constants';
+import { imageTypeOffset, QUESTIONS_NUM } from './constants';
 import { ModalType } from './types';
 
 export const selectCurrentQuiz = (state: RootState) => state.quiz.currentQuiz!;
@@ -18,7 +18,7 @@ export const selectCurrentCategory = (state: RootState) => {
 
 export const selectCurrentCorrectNum = createSelector(
   [selectCurrentQuiz, selectCurrentCategory],
-  ({ question }, { index }) => index * QUESTIONS_NUM + question
+  ({ question, type }, { index }) => index * QUESTIONS_NUM + question + imageTypeOffset[type]
 );
 
 const selectModalsVisibility = (state: RootState) => state.quiz.modalsIsVisible;
