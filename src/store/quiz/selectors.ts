@@ -26,3 +26,5 @@ export const selectVisibleModalType = createSelector(
   [selectModalsVisibility],
   (modals) => Object.entries(modals).filter((modal) => modal[1])[0]?.[0] as ModalType
 );
+
+export const selectSettings = (state: RootState) => state.quiz.settings;

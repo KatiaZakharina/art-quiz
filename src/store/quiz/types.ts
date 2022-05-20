@@ -42,6 +42,9 @@ export type MainState = {
   settings: Settings;
   score: { [type in QuizType]: TypeScore };
   modalsIsVisible: { [key in ModalType]: boolean };
+  timer: number;
+  timerId: null | number;
+  timerStopped: boolean;
 };
 
 //reducers props

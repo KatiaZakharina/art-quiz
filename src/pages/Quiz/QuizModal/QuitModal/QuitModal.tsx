@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'components/Buttons/Buttons';
 import { StyledBox } from 'components/Modal/StyledModal';
 import { useAppDispatch } from 'store/hooks';
-import { endQuiz, setModalVisibility } from 'store/quiz/actions';
+import { deleteTimer, endQuiz, playTimer, setModalVisibility } from 'store/quiz/actions';
 import { Question, ButtonsWrapper } from './StyledQuitModal';
 
 export const QuitModal = () => {
@@ -13,11 +13,13 @@ export const QuitModal = () => {
 
   const onCancel = () => {
     dispatch(setModalVisibility({ type: 'quit', visible: false }));
+    dispatch(playTimer());
   };
 
   const onConfirm = () => {
     dispatch(endQuiz());
     dispatch(setModalVisibility({ type: 'quit', visible: false }));
+    dispatch(deleteTimer());
   };
 
   return (
@@ -38,7 +40,7 @@ export const QuitModal = () => {
             {t('Cancel')}
           </Button>
 
-          <Button size="full" variant="inverse_outline" onClick={onConfirm}>
+          <Button size="full" variant="main_outline" onClick={onConfirm}>
             {t('Yes')}
           </Button>
         </ButtonsWrapper>

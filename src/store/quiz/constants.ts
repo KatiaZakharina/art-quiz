@@ -3,6 +3,7 @@ import categories from 'model/categories.json';
 
 export const QUESTIONS_NUM = 10;
 export const ANSWERS_NUM = 4;
+export const TIMER_DURATION = 5000;
 
 export const imageTypeOffset = { artists: 0, pictures: 120 };
 export const categoriesNumber = { artists: 12, pictures: 12 };
@@ -41,4 +42,7 @@ export const defaultState: MainState = {
   score: defaultScore,
   currentQuiz: null,
   modalsIsVisible: defaultModals,
+  timer: TIMER_DURATION,
+  timerId: null,
+  timerStopped: false,
 };

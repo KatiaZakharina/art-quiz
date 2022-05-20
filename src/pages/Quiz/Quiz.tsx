@@ -7,13 +7,14 @@ import { Timer } from './Timer/Timer';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { ArtistQuiz, PictureQuiz } from './types';
 import { categoriesNumber, imageTypeOffset, QUESTIONS_NUM } from 'store/quiz/constants';
-import { answerQuestion, setModalVisibility } from 'store/quiz/actions';
+import { answerQuestion, setModalVisibility, stopTimer } from 'store/quiz/actions';
 import { getUniqueRandomsInRange } from 'helpers/getUniqueRandomsInRange';
 import { cacheImages } from 'helpers/cacheImages';
 
 import {
   selectCurrentCorrectNum,
   selectCurrentQuiz,
+  selectSettings,
   selectVisibleModalType,
 } from 'store/quiz/selectors';
 
@@ -23,6 +24,7 @@ export const Quiz = () => {
 
   const visibleModalType = useAppSelector(selectVisibleModalType);
   const { type } = useAppSelector(selectCurrentQuiz);
+  const { hasTimer } = useAppSelector(selectSettings);
   const dispatch = useAppDispatch();
 
   const minImgNum = imageTypeOffset[type];
@@ -41,11 +43,13 @@ export const Quiz = () => {
   const onAnswerQuestion = (num: number) => {
     dispatch(answerQuestion(num === correctNum));
     dispatch(setModalVisibility({ type: 'answer', visible: true }));
+    dispatch(stopTimer());
   };
 
   return (
     <ColumnContainer>
-      <Timer />
+      {hasTimer && <Timer />}
+
       {type === 'artists' ? (
         <ArtistQuiz
           isLoading={isLoading}

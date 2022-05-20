@@ -3,15 +3,21 @@ import { changeLanguage } from 'translation/changeLanguage';
 
 import {
   ANSWER_QUESTION,
+  CHANGE_TIMER,
+  CLEAR_TIMER,
+  DELETE_TIMER,
   END_QUIZ,
   LEAVE_QUIZ,
   NEXT_QUESTION,
   NEXT_QUIZ,
   PLAY_AGAIN,
+  PLAY_TIMER,
   SET_CATEGORY_SCORE,
   SET_MODAL_VISIBILITY,
   SET_SETTINGS,
+  SET_TIMER,
   START_QUIZ,
+  STOP_TIMER,
 } from './actions';
 
 import {
@@ -20,6 +26,7 @@ import {
   defaultModals,
   defaultState,
   QUESTIONS_NUM,
+  TIMER_DURATION,
 } from './constants';
 
 import { Category, CategoryScoreProps, modalVisibility, QuizProps } from './types';
@@ -60,6 +67,36 @@ export const quizReducer = createReducer(defaultState, {
     state.currentQuiz.question = 0;
     state.score[type][category].score.value = 0;
     state.score[type][category].score.results = Array(QUESTIONS_NUM).fill(false);
+  },
+
+  [SET_TIMER]: (state, { payload }) => {
+    state.timer = TIMER_DURATION;
+    state.timerId = payload;
+    console.log(state.timer, state.timerId, 'SET_TIMER');
+  },
+
+  [DELETE_TIMER]: (state) => {
+    state.timerId && window.clearInterval(state.timerId);
+    state.timer = TIMER_DURATION;
+    state.timerId = null;
+    console.log(state.timer, state.timerId, 'DELETE_TIMER');
+  },
+
+  [CLEAR_TIMER]: (state) => {
+    state.timer = TIMER_DURATION;
+    console.log(state.timer, state.timerId, 'CLEAR_TIMER');
+  },
+
+  [STOP_TIMER]: (state) => {
+    state.timerStopped = true;
+  },
+
+  [PLAY_TIMER]: (state) => {
+    state.timerStopped = false;
+  },
+
+  [CHANGE_TIMER]: (state, { payload }) => {
+    if (state.timer >= payload && !state.timerStopped) state.timer -= payload;
   },
 
   [ANSWER_QUESTION]: (state, { payload }: { payload: boolean }) => {
