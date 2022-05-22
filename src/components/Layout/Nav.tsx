@@ -18,13 +18,18 @@ const NavItem = styled.div`
   align-items: center;
 `;
 
-type Props = { title: string };
-export const Nav = ({ title }: Props) => {
+type Props = { title: string; onClick?: (event?: Event) => void };
+export const Nav = ({ title, onClick }: Props) => {
   const navigate = useNavigate();
+
+  const onBack = () => {
+    onClick && onClick();
+    navigate(-1);
+  };
 
   return (
     <StyledNav>
-      <NavItem onClick={() => navigate(-1)}>
+      <NavItem onClick={onBack}>
         <ThemedSVG src={backArrow} width="3rem" height="3rem" />
         {title}
       </NavItem>
