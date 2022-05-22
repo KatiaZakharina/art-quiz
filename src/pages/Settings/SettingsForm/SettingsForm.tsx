@@ -5,7 +5,7 @@ import { RangeInput, SwitchInput } from 'components/Inputs';
 import { ThemedSVG } from 'components/ThemedSVG/ThemedSVG';
 import { StyledForm, Inputs, Fieldset, Legend, VolumeIcons } from './StyledSettingsForm';
 
-import { useAppDispatch } from 'store/hooks';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { setSettings } from 'store/quiz/actions';
 import { Languages, Themes } from 'store/quiz/types';
 
@@ -21,6 +21,7 @@ type SettingsData = {
 };
 
 export function SettingsForm() {
+  // const settings = useAppSelector((state) => state.quiz.settings);
   const prefillSettings = {
     themeIsDark: true,
     volume: '0',
@@ -41,6 +42,7 @@ export function SettingsForm() {
       hasTimer: data.hasTimer,
       language: data.language ? Languages.RU : Languages.EN,
     };
+    console.log(data, settings);
     dispatch(setSettings(settings));
   };
 

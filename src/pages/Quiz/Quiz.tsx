@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { ColumnContainer } from 'components/Layout';
+import { ColumnContainer, Nav } from 'components/Layout';
 import { QuizModal } from './QuizModal/QuizModal';
 import { Timer } from './Timer/Timer';
 
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { ArtistQuiz, PictureQuiz } from './types';
 import { categoriesNumber, imageTypeOffset, QUESTIONS_NUM } from 'store/quiz/constants';
-import { answerQuestion, setModalVisibility, stopTimer } from 'store/quiz/actions';
+import { answerQuestion, endQuiz, setModalVisibility, stopTimer } from 'store/quiz/actions';
 import { getUniqueRandomsInRange } from 'helpers/getUniqueRandomsInRange';
 import { cacheImages } from 'helpers/cacheImages';
 
@@ -19,6 +20,7 @@ import {
 } from 'store/quiz/selectors';
 
 export const Quiz = () => {
+  const { t } = useTranslation();
   const [answers, setAnswers] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -48,7 +50,16 @@ export const Quiz = () => {
 
   return (
     <ColumnContainer>
-      {hasTimer && <Timer />}
+      {hasTimer ? (
+        <Timer />
+      ) : (
+        <Nav
+          title={t('Quit')}
+          onClick={() => {
+            dispatch(endQuiz());
+          }}
+        />
+      )}
 
       {type === 'artists' ? (
         <ArtistQuiz
