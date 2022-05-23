@@ -113,7 +113,6 @@ export const FinalModal = () => {
           {buttons.map((button, index) => (
             <Button
               variant="secondary"
-              //FIXME:
               size="full"
               onClick={button.onClick}
               key={index}

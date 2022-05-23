@@ -21,16 +21,7 @@ type SettingsData = {
 };
 
 export function SettingsForm() {
-  // const settings = useAppSelector((state) => state.quiz.settings);
-  const prefillSettings = {
-    themeIsDark: true,
-    volume: '0',
-  };
-
-  const { register, handleSubmit } = useForm<SettingsData>({
-    defaultValues: prefillSettings,
-  });
-  //FIXME: prefill
+  const { register, handleSubmit } = useForm<SettingsData>();
 
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -67,14 +58,14 @@ export function SettingsForm() {
           </label>
         </Fieldset>
 
-        <Fieldset>
+        {/* <Fieldset>
           <Legend>{t('Volume')}</Legend>
           <RangeInput {...register('volume')} size="small" defaultValue={70} max={100} min={0} />
           <VolumeIcons>
             <ThemedSVG src={volumeDown} width="2rem" height="2rem" />
             <ThemedSVG src={volumeUp} width="2rem" height="2rem" />
           </VolumeIcons>
-        </Fieldset>
+        </Fieldset> */}
 
         <Fieldset>
           <Legend>{t('Time game')}</Legend>
