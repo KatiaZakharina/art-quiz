@@ -40,7 +40,7 @@ export const QuitModal = () => {
             {t('Cancel')}
           </Button>
 
-          <Button size="full" variant="main_outline" onClick={onConfirm}>
+          <Button size="full" variant="secondary" onClick={onConfirm}>
             {t('Yes')}
           </Button>
         </ButtonsWrapper>
